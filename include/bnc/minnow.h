@@ -18,6 +18,7 @@ static constexpr int Y_START = 0;
 //Speed of the player
 static constexpr bn::fixed SPEED = 1;
 
+
 bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
 class Minnow {
@@ -43,6 +44,10 @@ class Minnow {
     bn::sprite_ptr _sprite;
 
     bn::fixed _speed;
+
+    //direction number
+    int direction;
+
 
     //if statemenst for the minnows direction goes here
 
