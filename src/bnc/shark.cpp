@@ -2,12 +2,14 @@
 #include "bn_sprite_items_shark.h"
 #include "mj/mj_game_result.h"
 #include <bn_log.h>
+#include "bnc/minnow.h"
 
 
 namespace bnc{
 
-    Shark::Shark(bn::fixed_point (starting_position)) :
-    _shark(bn::sprite_items::shark.create_sprite(starting_position)){
+    Shark::Shark(bn::fixed_point starting_position, bn::fixed speed) :
+    _shark(bn::sprite_items::shark.create_sprite(starting_position)) 
+    {
 
     }
 
@@ -17,6 +19,22 @@ namespace bnc{
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             // bool lose mj::game_result::exit = true;
             BN_LOG("caught");
+        }
+
+        if(_shark.x() < minnow._sprite.x()){
+            _shark.set_x(_shark.x() + SHARK_SPEED);
+        }
+
+        if(_shark.x() > minnow._sprite.x()){
+            _shark.set_x(_shark.x() - SHARK_SPEED);
+        }
+
+        if(_shark.y() > minnow._sprite.y()){
+            _shark.set_y(_shark.y() - SHARK_SPEED);
+        }
+
+        if(_shark.y() < minnow._sprite.y()){
+            _shark.set_y(_shark.y() + SHARK_SPEED);
         }
     }
 }

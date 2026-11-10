@@ -9,9 +9,12 @@
 #include <bn_size.h>
 
 
+
 namespace bnc {
 
 static constexpr bn::size SHARK_SIZE = {8, 8};
+
+static constexpr int SHARK_SPEED = 0.5;
 
 //Starting position of the player
 static constexpr int SHARK_X_START = 90;
@@ -28,7 +31,7 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
         public:
         //constructor
-        Shark(bn::fixed_point starting_position);
+        Shark(bn::fixed_point starting_position, bn::fixed speed);
 
         void update(Minnow& minnow);
 
