@@ -2,6 +2,7 @@
 
 #include "mj/mj_game.h"
 
+
 namespace bnc {
 
     /**
