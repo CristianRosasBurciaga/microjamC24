@@ -6,6 +6,7 @@
 
 #include "mj/mj_game_list.h"
 #include "bnc/minnow.h"
+#include "bnc/shark.h"
 
 
 // String arrays for the credits can go in an anonymous namespace
@@ -37,10 +38,8 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _minnow(bn::fixed_point(X_START, Y_START), SPEED) 
-    {
-
-    }
+    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(bn::fixed_point(SHARK_X_START, SHARK_Y_START))
+    {}
 
     /**
  * The instructions given to the player at the beginning of the microgame.

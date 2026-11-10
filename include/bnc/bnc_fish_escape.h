@@ -2,6 +2,7 @@
 
 #include "mj/mj_game.h"
 #include "bnc/minnow.h"
+#include "bnc/shark.h"
 
 
 namespace bnc {
@@ -73,6 +74,9 @@ namespace bnc {
         private:
         // The character that the player can move
         Minnow _minnow;
+
+        //enemy player tries to avoid
+        Shark _shark;
 
 
     };
