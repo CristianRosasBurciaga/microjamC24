@@ -3,7 +3,6 @@
 #include "bn_keypad.h"
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
-#include "bn_sprite_animate_actions.h"
 
 #include "mj/mj_game_list.h"
 #include "bnc/minnow.h"
@@ -37,7 +36,8 @@ namespace bnc
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
-    mj::game("bnc") 
+    mj::game("bnc"), 
+    _minnow(bn::fixed_point(X_START, Y_START), SPEED) 
     {
 
     }
@@ -73,7 +73,7 @@ int bnc_fish_escape::total_frames() const {
 mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data)
 {
     // update the player position
-    //_player.update();
+    _minnow.update();
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
@@ -88,8 +88,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
  * In this particular microgame the player wins if they make the ball leave the screen.
  */
 bool bnc_fish_escape::victory() const {
-    // return _player.out_of_bounds();
-    return false;
+    return _minnow.out_of_bounds();
 }
 
 /**

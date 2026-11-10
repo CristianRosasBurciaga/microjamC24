@@ -51,5 +51,5 @@ class Minnow {
      */
     void _update_position();
 
-}
+};
 }
