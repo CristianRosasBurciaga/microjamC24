@@ -16,6 +16,7 @@ static constexpr bn::size SHARK_SIZE = {8, 8};
 //Starting position of the player
 static constexpr int SHARK_X_START = 90;
 static constexpr int SHARK_Y_START = 0;
+static constexpr int MAX_SHARKS = 4;
 
 bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
@@ -34,5 +35,6 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
         private:
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
+        bn::vector<Shark, MAX_SHARKS> sharks = {};
     };
 }
