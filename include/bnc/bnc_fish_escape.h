@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "mj/mj_game.h"
+#include "bnc/minnow.h"
 
 namespace bnc {
 
@@ -67,6 +68,11 @@ namespace bnc {
          * @param data shared information, such as a rng and number of frames left in the microgame
          */
         void fade_out(const mj::game_data& data) override;
+
+        private:
+        // The character that the player can move
+        Minnow _minnow;
+
 
     };
 }

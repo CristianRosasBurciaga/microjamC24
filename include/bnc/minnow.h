@@ -46,11 +46,10 @@ class Minnow {
 
     //if statemenst for the minnows direction goes here
 
-
     /**
      * Reads from the d-pad and moves the player by one frame accordingly.
      */
     void _update_position();
 
 }
-};
+}
