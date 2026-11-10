@@ -1,5 +1,6 @@
 #pragma once
 
+#include "bnc/minnow.h"
 #include <bn_fixed_point.h>
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_animate_actions.h>
@@ -10,7 +11,7 @@
 
 namespace bnc {
 
-static constexpr bn::size ENEMY_SIZE = {8, 8};
+static constexpr bn::size SHARK_SIZE = {8, 8};
 
 //Starting position of the player
 static constexpr int SHARK_X_START = 90;
@@ -28,7 +29,10 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
         //constructor
         Shark(bn::fixed_point starting_position);
 
+        void update(Minnow& minnow);
+
         private:
         bn::sprite_ptr _shark;
+        bn::rect _shark_hit_box;
     };
 }
