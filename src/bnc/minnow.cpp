@@ -5,6 +5,7 @@
 #include "bn_sprite_items_minnow_left.h"
 #include "bn_sprite_items_minnow_up.h"
 #include "bn_sprite_items_minnow_down.h"
+#include "bnc/shark.h"
 
 
 
@@ -41,6 +42,8 @@ namespace bnc {
             _sprite.set_y(MIN_Y);
         }
 
+
+        _minnow_hit_box = create_bounding_box(_sprite, PLAYER_SIZE);
     }
 
     bool Minnow::out_of_bounds() const{
@@ -50,6 +53,8 @@ namespace bnc {
             return false;
         }
     }
+
+    
 
 
 /**
