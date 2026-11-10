@@ -74,7 +74,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
     // update the player position
     _minnow.update();
 
-    //shark.update();
+    // _shark.update();
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
