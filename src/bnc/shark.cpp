@@ -4,8 +4,8 @@
 
 namespace bnc{
 
-    shark::shark(bn::fixed x_start, bn::fixed y_start) :
-    _shark(bn::sprite_items::shark.create_sprite(x_start, y_start)){
+    Shark::Shark(bn::fixed_point (starting_position)) :
+    _shark(bn::sprite_items::shark.create_sprite(starting_position)){
 
     }
 }
