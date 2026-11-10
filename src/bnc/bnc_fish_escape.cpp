@@ -38,7 +38,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
 
 bool bnc_fish_escape::victory() const {
     // return _player.out_of_bounds();
-    return true;
+    return false;
 }
 
 void bnc_fish_escape::fade_in([[maybe_unused]] const mj::game_data& data)
