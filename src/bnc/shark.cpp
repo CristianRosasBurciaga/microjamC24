@@ -1,4 +1,5 @@
 #include "bnc/shark.h"
+#include "bn_sprite_items_shark.h"
 
 
 namespace bnc{
