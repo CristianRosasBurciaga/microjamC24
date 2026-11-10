@@ -42,6 +42,8 @@ class Minnow {
     // The sprite to display the player
     bn::sprite_ptr _sprite;
 
+    bn::fixed _speed;
+
     //if statemenst for the minnows direction goes here
 
 
@@ -51,4 +53,4 @@ class Minnow {
     void _update_position();
 
 }
-}
+};
