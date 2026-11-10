@@ -5,6 +5,7 @@
 #include "bn_sprite_items_minnow_left.h"
 #include "bn_sprite_items_minnow_up.h"
 #include "bn_sprite_items_minnow_down.h"
+#include "bnc/shark.h"
 
 
 
@@ -19,6 +20,13 @@ namespace bnc {
         _sprite(bn::sprite_items::minnow_right.create_sprite(starting_position)),
         _speed(speed)
         {}
+
+        bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
+    return bn::rect(sprite.x().round_integer(),
+                    sprite.y().round_integer(),
+                    box_size.width(),
+                    box_size.height());
+}
 
     void Minnow::update(){
         _update_position();
@@ -41,6 +49,8 @@ namespace bnc {
             _sprite.set_y(MIN_Y);
         }
 
+
+        minnow_hit_box = create_bounding_box(_sprite, PLAYER_SIZE);
     }
 
     bool Minnow::out_of_bounds() const{
@@ -50,6 +60,8 @@ namespace bnc {
             return false;
         }
     }
+
+    
 
 
 /**
