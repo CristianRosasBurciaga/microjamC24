@@ -12,7 +12,7 @@ namespace bnc{
     void Shark::update(Minnow& minnow) {
         _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
 
-        if(_shark_hit_box.intersects(minnow._minnow_hit_box)){
+        if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             
         }
     }

@@ -36,7 +36,7 @@ class Minnow {
     void update();
 
     // bn::rect minnow_hit_box();
-      bn::rect _minnow_hit_box;
+      bn::rect minnow_hit_box;
 
     bool out_of_bounds() const;
 
