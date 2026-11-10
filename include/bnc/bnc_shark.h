@@ -1,6 +1,6 @@
 #pragma once
 
-#include "bnc/minnow.h"
+#include "bnc/bnc_minnow.h"
 #include <bn_fixed_point.h>
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_animate_actions.h>
@@ -38,6 +38,7 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
         private:
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
+        bn::fixed _shark_speed;
         bn::vector<Shark, MAX_SHARKS> sharks = {};
     };
 }

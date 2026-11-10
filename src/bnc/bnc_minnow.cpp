@@ -1,4 +1,4 @@
-#include "bnc/minnow.h"
+#include "bnc/bnc_minnow.h"
 
 #include <bn_keypad.h>
 #include "bn_sprite_items_minnow_right.h"
