@@ -39,7 +39,7 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
         Shark(bn::fixed x, bn::fixed y, bn::fixed speed);
 
         void update(Minnow& minnow);
-        void collide(Minnow& minnow);
+        bool collide(Minnow& minnow);
         bn::fixed random_X_Point(int min, int max);
         bn::fixed random_Y_Point(int min, int max);
 
