@@ -12,14 +12,14 @@ namespace bnc{
 
     Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
     _shark(bn::sprite_items::shark.create_sprite(x, y)),
-    _shark_size(SHARK_SIZE),
-    _shark_speed(speed), _shark_hit_box(create_bounding_box(_shark, _shark_size))
+    _shark_speed(speed), _shark_size(SHARK_SIZE),
+    _shark_hit_box(create_bounding_box(_shark, _shark_size))
     {}
 
     
 
     bn::random random;
-    bn::vector<Shark, MAX_SHARKS> _sharks = {};
+    bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
 
     bn::fixed Shark::random_X_Point(int min, int max) {
         return random.get_unbiased_fixed(min, max);
@@ -46,8 +46,8 @@ namespace bnc{
 
     void Shark::update(Minnow& minnow) {
 
-        if(_sharks.size() < _sharks.max_size()) {
-             _sharks.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
+        if(_shark_vector.size() < _shark_vector.max_size()) {
+             _shark_vector.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
               
