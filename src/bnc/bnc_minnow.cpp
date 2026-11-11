@@ -20,6 +20,13 @@ namespace bnc {
         _speed(speed)
         {}
 
+         bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
+    return bn::rect(sprite.x().round_integer(),
+                    sprite.y().round_integer(),
+                    box_size.width(),
+                    box_size.height());
+         }
+
     void Minnow::update(){
         _update_position();
 
@@ -40,6 +47,8 @@ namespace bnc {
         if(_sprite.y() < MIN_Y) {
             _sprite.set_y(MIN_Y);
         }
+
+        minnow_hit_box = create_bounding_box(_sprite, PLAYER_SIZE);
 
     }
 
