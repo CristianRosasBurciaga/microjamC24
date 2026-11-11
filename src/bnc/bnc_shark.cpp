@@ -26,12 +26,20 @@ namespace bnc{
         return random.get_unbiased_fixed(min, max);
     }  
 
+    bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
+    return bn::rect(sprite.x().round_integer(),
+                    sprite.y().round_integer(),
+                    box_size.width(),
+                    box_size.height());
+}
+
+
     void Shark::update(Minnow& minnow) {
         if(_sharks.size() < _sharks.max_size()) {
              _sharks.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
-        _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
+        _shark_hit_box = create_bounding_box(_sprite, size);
 
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             // bool lose mj::game_result::exit = true;
