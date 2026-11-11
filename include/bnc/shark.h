@@ -1,6 +1,8 @@
 #pragma once
 
 #include "bnc/minnow.h"
+#include <bn_fixed.h>
+#include <bn_random.h>
 #include <bn_fixed_point.h>
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_animate_actions.h>
@@ -28,13 +30,16 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
         public:
         //constructor
-        Shark(bn::fixed_point starting_position);
+        bn::fixed x;
+        bn::fixed y;
+        Shark(bn::fixed x, bn::fixed y);
 
         void update(Minnow& minnow);
 
         private:
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
-        bn::vector<Shark, MAX_SHARKS> sharks = {};
+        bn::vector<Shark, MAX_SHARKS> _sharks = {};
+        bn::random random;
     };
 }

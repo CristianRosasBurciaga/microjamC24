@@ -28,6 +28,7 @@ MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
 
 namespace bnc
 {
+
     /**
  * Constructor for an instance of an aub_test_game
  * 
@@ -38,7 +39,7 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(bn::fixed_point(SHARK_X_START, SHARK_Y_START))
+    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.x, _shark.y)
     {}
 
     /**
@@ -74,7 +75,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
     // update the player position
     _minnow.update();
 
-    // _shark.update();
+    _shark.update(_minnow);
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
