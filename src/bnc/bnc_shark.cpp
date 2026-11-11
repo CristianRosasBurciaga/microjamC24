@@ -15,6 +15,8 @@ namespace bnc{
     _shark_speed(speed)
     {}
 
+    
+
     bn::random random;
     bn::vector<Shark, MAX_SHARKS> _sharks = {};
 
