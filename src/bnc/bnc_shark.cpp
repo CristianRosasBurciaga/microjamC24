@@ -37,6 +37,7 @@ namespace bnc{
     }
 
     void Shark::update(Minnow& minnow) {
+
         if(_sharks.size() < _sharks.max_size()) {
              _sharks.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
@@ -59,5 +60,14 @@ namespace bnc{
         if(_shark.y() < minnow._sprite.y()){
             _shark.set_y(_shark.y() + _shark_speed);
         }
+
+        _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
+
+        if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
+            // bool lose mj::game_result::exit = true;
+            BN_LOG("caught");
+        }
+
+
     }
 }
