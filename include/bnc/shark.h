@@ -16,30 +16,31 @@ namespace bnc {
 static constexpr bn::size SHARK_SIZE = {8, 8};
 
 //Starting position of the player
-static constexpr int SHARK_X_START = 90;
-static constexpr int SHARK_Y_START = 0;
+// static constexpr int SHARK_X_START = 90;
+// static constexpr int SHARK_Y_START = 0;
 static constexpr int MAX_SHARKS = 4;
 
-bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
-
-    class Shark {
-        static constexpr int MAX_X = bn::display::width() / 2;
+ static constexpr int MAX_X = bn::display::width() / 2;
         static constexpr int MIN_X = - bn::display::width() / 2;
         static constexpr int MAX_Y = bn::display::height() / 2;
         static constexpr int MIN_Y = - bn::display::height() / 2;
 
+bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
+
+    class Shark {
+
         public:
+        bn::random random;
         //constructor
-        bn::fixed x;
-        bn::fixed y;
         Shark(bn::fixed x, bn::fixed y);
 
         void update(Minnow& minnow);
 
+        bn::fixed random_X_Point(int min, int max);
+        bn::fixed random_Y_Point(int min, int max);
+
         private:
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
-        bn::vector<Shark, MAX_SHARKS> _sharks = {};
-        bn::random random;
     };
 }
