@@ -76,7 +76,7 @@ namespace bnc{
         
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             // bool lose mj::game_result::exit = true;
-            _shark_collision();
+            shark_collision = true;
             BN_LOG("caught");
         }
 
