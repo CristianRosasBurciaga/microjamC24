@@ -7,6 +7,9 @@
 #include <bn_display.h>
 #include <bn_rect.h>
 #include <bn_size.h>
+#include <bn_random.h>
+#include <bn_fixed.h>
+
 
 
 
@@ -31,7 +34,7 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
     class Shark {
 
         public:
-        bn::random random;
+        // bn::random random;
         //constructor
         Shark(bn::fixed x, bn::fixed y, bn::fixed speed);
 

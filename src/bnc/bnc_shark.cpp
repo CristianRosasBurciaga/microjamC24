@@ -3,7 +3,9 @@
 #include "mj/mj_game_result.h"
 #include <bn_log.h>
 #include "bnc/bnc_minnow.h"
+#include <bn_vector.h>
 #include <bn_random.h>
+#include <bn_rect.h>
 
 
 namespace bnc{
@@ -26,7 +28,7 @@ namespace bnc{
 
     void Shark::update(Minnow& minnow) {
         if(_sharks.size() < _sharks.max_size()) {
-             _sharks.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y)));
+             _sharks.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
         _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
