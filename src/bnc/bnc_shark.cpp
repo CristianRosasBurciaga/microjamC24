@@ -12,8 +12,9 @@ namespace bnc{
 
     Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
     _shark(bn::sprite_items::shark.create_sprite(x, y)),
-    _shark_speed(speed), _shark_size(SHARK_SIZE),
-    _shark_hit_box(create_bounding_box(_shark, _shark_size))
+    _shark_size(SHARK_SIZE),
+    _shark_hit_box(create_bounding_box(_shark, _shark_size)),
+    _shark_speed(speed)
     {}
 
     
