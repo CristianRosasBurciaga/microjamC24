@@ -39,7 +39,7 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y))
+    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED)
     {}
 
     /**
