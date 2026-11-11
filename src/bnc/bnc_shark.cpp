@@ -39,8 +39,8 @@ namespace bnc{
         return false;
     }
 
-            bool Shark::shark_collision() const {
-            return true;
+            bool Shark::_shark_collision() const {
+            return shark_collision;
         }
 
 
@@ -76,7 +76,7 @@ namespace bnc{
         
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             // bool lose mj::game_result::exit = true;
-            _shark_collision = true;
+            _shark_collision();
             BN_LOG("caught");
         }
 
