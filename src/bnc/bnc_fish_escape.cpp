@@ -30,7 +30,7 @@ namespace bnc
 {
 
     /**
- * Constructor for an instance of an aub_test_game
+ * Constructor for an instance of an bnc_fish_escape
  * 
  * First item in the initializer list MUST be a call to the superclass, mj::game with the identifier for the microgame.
  * 
@@ -39,7 +39,7 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED)
+    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED) 
     {}
 
     /**
