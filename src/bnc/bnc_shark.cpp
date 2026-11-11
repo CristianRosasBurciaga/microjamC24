@@ -11,8 +11,9 @@
 namespace bnc{
 
     Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
-    _shark(bn::sprite_items::shark.create_sprite(x, y)), 
-    _shark_speed(speed)
+    _shark(bn::sprite_items::shark.create_sprite(x, y)),
+    _shark_size(SHARK_SIZE),
+    _shark_speed(speed), _shark_hit_box(create_bounding_box(_shark, _shark_size))
     {}
 
     
@@ -38,8 +39,8 @@ namespace bnc{
         return false;
     }
 
-            bool Shark::shark_collision() const {
-            return true;
+            bool Shark::_shark_collision() const {
+            return shark_collision;
         }
 
 
@@ -52,6 +53,7 @@ namespace bnc{
               
         if(collide(minnow)) {
             mj::game_result(false, false);
+            BN_LOG("YOU LOSE!");
         }
 
         if(_shark.x() < minnow._sprite.x()){
@@ -74,7 +76,7 @@ namespace bnc{
         
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             // bool lose mj::game_result::exit = true;
-            _shark_collision = true;
+            _shark_collision();
             BN_LOG("caught");
         }
 
