@@ -28,12 +28,14 @@ namespace bnc{
         return random.get_unbiased_fixed(min, max);
     }  
 
-    void bnc::Shark::collide(Minnow& minnow) {
+    bool bnc::Shark::collide(Minnow& minnow) {
          _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             BN_LOG("caught");
-            mj::game_result(true);;
-        } 
+            bool collide = true;
+            return collide;
+        }
+        return false;
     }
 
             bool Shark::shark_collision() const {
@@ -48,7 +50,9 @@ namespace bnc{
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
               
-        collide(minnow);
+        if(collide(minnow)) {
+            mj::game_result(false, false);
+        }
 
         if(_shark.x() < minnow._sprite.x()){
             _shark.set_x(_shark.x() + _shark_speed);
