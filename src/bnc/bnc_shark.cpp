@@ -3,6 +3,8 @@
 #include "mj/mj_game_result.h"
 #include <bn_log.h>
 #include "bnc/bnc_minnow.h"
+#include <bn_random.h>
+
 
 namespace bnc{
 
