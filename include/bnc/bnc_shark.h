@@ -43,7 +43,10 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
         bn::fixed random_X_Point(int min, int max);
         bn::fixed random_Y_Point(int min, int max);
 
+        bool _shark_collision() const; //a get for the private bool
+
         private:
+        bool shark_collision = false;
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
         bn::fixed _shark_speed;

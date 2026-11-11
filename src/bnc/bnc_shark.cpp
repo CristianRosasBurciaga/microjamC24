@@ -39,6 +39,11 @@ namespace bnc{
         return false;
     }
 
+            bool Shark::shark_collision() const {
+            return true;
+        }
+
+
     void Shark::update(Minnow& minnow) {
 
         if(_sharks.size() < _sharks.max_size()) {
@@ -68,9 +73,10 @@ namespace bnc{
         }
 
         _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
-
+        
         if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
             // bool lose mj::game_result::exit = true;
+            _shark_collision = true;
             BN_LOG("caught");
         }
 
