@@ -47,5 +47,6 @@ bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
         bn::fixed _shark_speed;
+        bn::size _shark_size;
     };
 }
