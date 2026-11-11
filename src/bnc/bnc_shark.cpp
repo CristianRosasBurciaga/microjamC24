@@ -28,17 +28,21 @@ namespace bnc{
         return random.get_unbiased_fixed(min, max);
     }  
 
+    void bnc::Shark::collide(Minnow& minnow) {
+         _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
+        if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
+            BN_LOG("caught");
+            mj::game_result(true);;
+        } 
+    }
+
     void Shark::update(Minnow& minnow) {
         if(_sharks.size() < _sharks.max_size()) {
              _sharks.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
-        _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
-
-        if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
-            // bool lose mj::game_result::exit = true;
-            BN_LOG("caught");
-        }
+              
+        collide(minnow);
 
         if(_shark.x() < minnow._sprite.x()){
             _shark.set_x(_shark.x() + _shark_speed);
