@@ -29,6 +29,8 @@ class Minnow {
 
     public:
 
+    // The sprite to display the player
+    bn::sprite_ptr _sprite;
 
     //constructor
     Minnow(bn::fixed_point starting_position, bn::fixed speed);
@@ -42,8 +44,6 @@ class Minnow {
 
     private:
 
-    // The sprite to display the player
-    bn::sprite_ptr _sprite;
   
     bn::fixed _speed;
 

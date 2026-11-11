@@ -5,8 +5,8 @@
 #include "bn_sprite_ptr.h"
 
 #include "mj/mj_game_list.h"
-#include "bnc/minnow.h"
-#include "bnc/shark.h"
+#include "bnc/bnc_minnow.h"
+#include "bnc/bnc_shark.h"
 
 
 // String arrays for the credits can go in an anonymous namespace

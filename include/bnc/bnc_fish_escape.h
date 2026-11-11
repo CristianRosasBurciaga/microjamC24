@@ -1,8 +1,8 @@
 #pragma once 
 
 #include "mj/mj_game.h"
-#include "bnc/minnow.h"
-#include "bnc/shark.h"
+#include "bnc/bnc_minnow.h"
+#include "bnc/bnc_shark.h"
 
 
 namespace bnc {
