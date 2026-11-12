@@ -2,7 +2,7 @@
 #include "bn_sprite_items_shark.h"
 #include "mj/mj_game_result.h"
 #include <bn_log.h>
-#include "bnc/bnc_minnow.h"
+#include "bnc/bnc_squid.h"
 #include <bn_vector.h>
 #include <bn_random.h>
 #include <bn_rect.h>
@@ -34,32 +34,32 @@ namespace bnc{
         }
 
 
-    void Shark::update(Minnow& minnow) {
+    void Shark::update(Squid& squid) {
 
         if(_shark_vector.size() < _shark_vector.max_size()) {
              _shark_vector.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
 
-        if(_shark.x() < minnow._sprite.x()){
+        if(_shark.x() < squid._sprite.x()){
             _shark.set_x(_shark.x() + _shark_speed);
         }
 
-        if(_shark.x() > minnow._sprite.x()){
+        if(_shark.x() > squid._sprite.x()){
             _shark.set_x(_shark.x() - _shark_speed);
         }
 
-        if(_shark.y() > minnow._sprite.y()){
+        if(_shark.y() > squid._sprite.y()){
             _shark.set_y(_shark.y() - _shark_speed);
         }
 
-        if(_shark.y() < minnow._sprite.y()){
+        if(_shark.y() < squid._sprite.y()){
             _shark.set_y(_shark.y() + _shark_speed);
         }
 
         _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
         
-        if(_shark_hit_box.intersects(minnow.minnow_hit_box)){
+        if(_shark_hit_box.intersects(squid.squid_hit_box)){
             // bool lose mj::game_result::exit = true;
             shark_collision = true;
             BN_LOG("caught");

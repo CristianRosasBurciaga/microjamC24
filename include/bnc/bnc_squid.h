@@ -20,7 +20,7 @@ static constexpr bn::fixed SPEED = 1;
 
 bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
-class Minnow {
+class Squid {
 
     static constexpr int MIN_Y = -bn::display::height() / 2;
     static constexpr int MAX_Y = bn::display::height() / 2;
@@ -28,31 +28,28 @@ class Minnow {
     static constexpr int MAX_X = bn::display::width() / 2;
 
     public:
-
-    // The sprite to display the player
-    bn::sprite_ptr _sprite;
-
     //constructor
-    Minnow(bn::fixed_point starting_position, bn::fixed speed);
+    Squid(bn::fixed_point starting_position, bn::fixed speed);
 
     void update();
-
-    // bn::rect minnow_hit_box();
-      bn::rect minnow_hit_box;
 
     bool out_of_bounds() const;
 
     private:
 
-  
-    bn::fixed _speed;
+    // The sprite to display the player
+    bn::sprite_ptr _sprite;
 
+    // bn::rect squid_hit_box();
+    bn::rect squid_hit_box;
+    
+    bn::fixed _speed;
 
     //direction number
     int direction;
 
 
-    //if statemenst for the minnows direction goes here
+    //if statemenst for the squids direction goes here
 
     /**
      * Reads from the d-pad and moves the player by one frame accordingly.
