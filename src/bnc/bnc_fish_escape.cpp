@@ -66,9 +66,9 @@ int bnc_fish_escape::_shark_increase(mj::difficulty_level difficulty) {
     if(difficulty == mj::difficulty_level::EASY) {
         return 3;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
-        return 6;
+        return 4;
     } 
-    return 9;
+    return 5;
 }
 
 /*
