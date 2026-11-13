@@ -75,8 +75,9 @@ namespace bnc {
         // The character that the player can move
         Squid _squid;
 
-        //enemy player tries to avoid
-        Shark _shark;
+        //shark vector
+        bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
+
 
 
     };

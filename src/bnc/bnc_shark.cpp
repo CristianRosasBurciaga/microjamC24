@@ -1,4 +1,5 @@
 #include "bnc/bnc_shark.h"
+#include "bnc/bnc_fish_escape.h"
 #include "bn_sprite_items_shark.h"
 #include "mj/mj_game_result.h"
 #include <bn_log.h>
@@ -18,8 +19,6 @@ namespace bnc{
 
     
 
-    bn::random random;
-    bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
 
     bn::fixed Shark::random_X_Point(int min, int max) {
         return random.get_unbiased_fixed(min, max);
