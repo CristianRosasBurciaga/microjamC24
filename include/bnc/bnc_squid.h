@@ -32,6 +32,7 @@ class Squid {
     Squid(bn::fixed_point starting_position, bn::fixed speed);
 
     bn::sprite_ptr get_sprite();
+    bn::rect get_squid_hit_box();
 
     void update();
 
@@ -43,16 +44,14 @@ class Squid {
     bn::sprite_ptr _sprite;
 
     // bn::rect squid_hit_box();
-    bn::rect squid_hit_box;
+    bn::rect _squid_hit_box;
     
     bn::fixed _speed;
 
     //direction number
     int direction;
 
-
     //if statemenst for the squids direction goes here
-
     /**
      * Reads from the d-pad and moves the player by one frame accordingly.
      */

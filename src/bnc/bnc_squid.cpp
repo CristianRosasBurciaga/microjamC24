@@ -24,6 +24,10 @@ namespace bnc {
             return _sprite;
         }
 
+        bn::rect Squid::get_squid_hit_box() {
+            return _squid_hit_box;
+        }
+
          bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
     return bn::rect(sprite.x().round_integer(),
                     sprite.y().round_integer(),
@@ -52,7 +56,7 @@ namespace bnc {
             _sprite.set_y(MIN_Y);
         }
 
-        squid_hit_box = create_bounding_box(_sprite, PLAYER_SIZE);
+        _squid_hit_box = create_bounding_box(_sprite, PLAYER_SIZE);
 
     }
 

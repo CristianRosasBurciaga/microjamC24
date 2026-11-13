@@ -59,7 +59,7 @@ namespace bnc{
 
         _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
         
-        if(_shark_hit_box.intersects(squid.squid_hit_box)){
+        if(_shark_hit_box.intersects(squid.get_squid_hit_box())){
             // bool lose mj::game_result::exit = true;
             shark_collision = true;
             BN_LOG("caught");
