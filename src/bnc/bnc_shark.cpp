@@ -11,21 +11,12 @@
 
 namespace bnc{
 
-    Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
+    Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed, bn::fixed max_sharks) :
     _shark(bn::sprite_items::bnc_shark.create_sprite(x, y)),
     _shark_hit_box(create_bounding_box(_shark, SHARK_SIZE)),
-    _shark_speed(speed), _shark_size(SHARK_SIZE)
+    _shark_speed(speed), _max_sharks(max_sharks), _shark_size(SHARK_SIZE)
     {}
 
-    
-
-    // bn::fixed Shark::random_X_Point(int min, int max) {
-    //     // return mj::mj_game_data::random.get_unbiased_fixed(min, max);
-    // }  
-    
-    // bn::fixed Shark::random_Y_Point(int min, int max) {
-    //     // return .get_unbiased_fixed(min, max);
-    // }  
 
     bool Shark::_shark_collision() const {
         return shark_collision;

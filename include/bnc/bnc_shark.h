@@ -30,7 +30,7 @@ namespace bnc {
 
         public:
         //constructor
-        Shark(bn::fixed x, bn::fixed y, bn::fixed speed);
+        Shark(bn::fixed x, bn::fixed y, bn::fixed speed, bn::fixed max_sharks);
         
         //getter functions
         void update(Squid& squid);
@@ -43,6 +43,6 @@ namespace bnc {
         bn::rect _shark_hit_box;
         bn::fixed _shark_speed;
         bn::size _shark_size;
-        int _max_sharks;
+        bn::fixed _max_sharks;
     };
 }

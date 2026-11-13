@@ -7,6 +7,9 @@
 
 namespace bnc {
 
+    static constexpr int MAX_SHARKS = 9;
+
+
     /**
  * bnc is a class representing a microgame where the player must leave the screen.
  * 
@@ -77,6 +80,8 @@ namespace bnc {
 
         //shark vector
         static constexpr int MAX_SHARKS = 9;
+        
+        //shark vector;
         bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
 
         // Returns progressively more sharks the harder the difficulty
