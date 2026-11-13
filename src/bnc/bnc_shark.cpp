@@ -1,6 +1,6 @@
 #include "bnc/bnc_shark.h"
 #include "bnc/bnc_fish_escape.h"
-#include "bn_sprite_items_bnc_shark.h"
+#include "bn_sprite_items_bnc_whale.h"
 #include "mj/mj_game_data.h"
 #include <bn_log.h>
 #include "bnc/bnc_squid.h"
@@ -12,7 +12,7 @@
 namespace bnc{
 
     Whale::Whale(bn::fixed x, bn::fixed y, bn::fixed speed) :
-    _whale(bn::sprite_items::bnc_shark.create_sprite(x, y)),
+    _whale(bn::sprite_items::bnc_whale.create_sprite(x, y)),
     _whale_hit_box(create_bounding_box(_whale, WHALE_SIZE)),
     _whale_speed(speed), _whale_size(WHALE_SIZE)
     {}
