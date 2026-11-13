@@ -42,10 +42,8 @@ namespace bnc
         [[maybe_unused]] const mj::game_data& data) : mj::game("bnc"), 
         _squid(bn::fixed_point(X_START, Y_START), SPEED)
     {
-        BN_LOG("Completed Games: " , completed_games);
-        BN_LOG("Difficulty number: " , completed_games / 9);
 
-        while(_shark_vector.size() < _shark_increase(recommended_difficulty_level(completed_games, data))) {
+        while(_shark_vector.size() < _shark_increase(recommended_difficulty_level(completed_games * 9, data))) {
 
             _shark_vector.push_back(Shark(
             data.random.get_unbiased_fixed(MIN_X, MAX_X),
