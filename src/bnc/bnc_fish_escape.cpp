@@ -39,7 +39,9 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _squid(bn::fixed_point(X_START, Y_START), SPEED) 
+    _squid(bn::fixed_point(X_START, Y_START), SPEED),  
+    _shark_increase(recommended_difficulty_level(completed_games, data))
+
     {
         while(_shark_vector.size() < _shark_vector.max_size() ) {
              _shark_vector.push_back(Shark(
