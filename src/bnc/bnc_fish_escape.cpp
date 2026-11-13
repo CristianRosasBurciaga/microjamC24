@@ -64,11 +64,11 @@ namespace bnc
 
 int bnc_fish_escape::_shark_increase(mj::difficulty_level difficulty) {
     if(difficulty == mj::difficulty_level::EASY) {
-        return 3;
+        return 4;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
-        return 6;
+        return 5;
     } 
-    return 9;
+    return 6;
 }
 
 /*
