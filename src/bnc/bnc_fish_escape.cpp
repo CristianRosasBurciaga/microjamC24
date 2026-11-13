@@ -37,19 +37,20 @@ namespace bnc
  * @param completed_games how many microgames the player has completed so far
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
-    bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
-    mj::game("bnc"), 
-    _squid(bn::fixed_point(X_START, Y_START), SPEED),  
-    _shark_increase(recommended_difficulty_level(completed_games, data))
-
+    bnc_fish_escape::bnc_fish_escape(
+        [[maybe_unused]] int completed_games,
+        [[maybe_unused]] const mj::game_data& data) : mj::game("bnc"), 
+        _squid(bn::fixed_point(X_START, Y_START), SPEED)
     {
-        while(_shark_vector.size() < _shark_vector.max_size() ) {
-             _shark_vector.push_back(Shark(
+
+        while(_shark_vector.size() < _shark_increase(recommended_difficulty_level(completed_games, data))) {
+
+            _shark_vector.push_back(Shark(
             data.random.get_unbiased_fixed(MIN_X, MAX_X),
             data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             SHARK_SPEED));
-            BN_LOG("shark created");
-             }
+
+        }
     };
 
     /**
@@ -61,7 +62,7 @@ namespace bnc
     return "Avoid Whales!";
 }
 
-bn::fixed bnc_fish_escape::_shark_increase(mj::difficulty_level difficulty) {
+int bnc_fish_escape::_shark_increase(mj::difficulty_level difficulty) {
     if(difficulty == mj::difficulty_level::EASY) {
         return 3;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
