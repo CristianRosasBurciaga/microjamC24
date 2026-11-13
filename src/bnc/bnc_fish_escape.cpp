@@ -53,7 +53,7 @@ namespace bnc
  * Must be <= 16 characters long
  */
     bn::string<16> bnc_fish_escape::title() const {
-    return "Avoid the Whales!";
+    return "Avoid Whales!";
 }
 
 /*
