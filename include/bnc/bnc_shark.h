@@ -21,12 +21,13 @@ namespace bnc {
 
     bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
+    static constexpr int MAX_X = bn::display::width() / 2;
+    static constexpr int MIN_X = - bn::display::width() / 2;
+    static constexpr int MAX_Y = bn::display::height() / 2;
+    static constexpr int MIN_Y = - bn::display::height() / 2;
+
     class Shark {
 
-        static constexpr int MAX_X = bn::display::width() / 2;
-        static constexpr int MIN_X = - bn::display::width() / 2;
-        static constexpr int MAX_Y = bn::display::height() / 2;
-        static constexpr int MIN_Y = - bn::display::height() / 2;
 
         public:
         //constructor
@@ -39,7 +40,6 @@ namespace bnc {
 
         private:
         bool shark_collision = false;
-        bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
         bn::sprite_ptr _shark;
         bn::rect _shark_hit_box;
         bn::fixed _shark_speed;

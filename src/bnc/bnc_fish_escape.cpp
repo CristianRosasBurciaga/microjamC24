@@ -133,4 +133,3 @@ void bnc_fish_escape::fade_out([[maybe_unused]] const mj::game_data& data)
 
 
 }
-}

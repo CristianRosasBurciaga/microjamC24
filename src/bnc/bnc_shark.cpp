@@ -1,6 +1,6 @@
 #include "bnc/bnc_shark.h"
 #include "bnc/bnc_fish_escape.h"
-#include "bn_sprite_items_shark.h"
+#include "bn_sprite_items_bnc_shark.h"
 #include "mj/mj_game_data.h"
 #include <bn_log.h>
 #include "bnc/bnc_squid.h"
@@ -12,20 +12,20 @@
 namespace bnc{
 
     Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
-    _shark(bn::sprite_items::shark.create_sprite(x, y)),
-    _shark_speed(speed), _shark_size(SHARK_SIZE),
-    _shark_hit_box(create_bounding_box(_shark, _shark_size))
+    _shark(bn::sprite_items::bnc_shark.create_sprite(x, y)),
+    _shark_hit_box(create_bounding_box(_shark, SHARK_SIZE)),
+    _shark_speed(speed), _shark_size(SHARK_SIZE)
     {}
 
     
 
-    bn::fixed Shark::random_X_Point(int min, int max) {
-        // return mj::mj_game_data::random.get_unbiased_fixed(min, max);
-    }  
+    // bn::fixed Shark::random_X_Point(int min, int max) {
+    //     // return mj::mj_game_data::random.get_unbiased_fixed(min, max);
+    // }  
     
-    bn::fixed Shark::random_Y_Point(int min, int max) {
-        // return .get_unbiased_fixed(min, max);
-    }  
+    // bn::fixed Shark::random_Y_Point(int min, int max) {
+    //     // return .get_unbiased_fixed(min, max);
+    // }  
 
     bool Shark::_shark_collision() const {
         return shark_collision;
