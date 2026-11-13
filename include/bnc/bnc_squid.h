@@ -7,56 +7,49 @@
 #include <bn_display.h>
 
 namespace bnc {
+    // Width and height of the the player bounding box
+    static constexpr bn::size PLAYER_SIZE = {8, 8};
 
-// Width and height of the the player bounding box
-static constexpr bn::size PLAYER_SIZE = {8, 8};
+    //Starting position of the player
+    static constexpr int X_START = -90;
+    static constexpr int Y_START = 0;
 
-//Starting position of the player
-static constexpr int X_START = -90;
-static constexpr int Y_START = 0;
+    //Speed of the player
+    static constexpr bn::fixed SPEED = 1;
 
-//Speed of the player
-static constexpr bn::fixed SPEED = 1;
+    bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
-bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
+    class Squid {
 
-class Squid {
+        static constexpr int MIN_Y = -bn::display::height() / 2;
+        static constexpr int MAX_Y = bn::display::height() / 2;
+        static constexpr int MIN_X = -bn::display::width() / 2;
+        static constexpr int MAX_X = bn::display::width() / 2;
 
-    static constexpr int MIN_Y = -bn::display::height() / 2;
-    static constexpr int MAX_Y = bn::display::height() / 2;
-    static constexpr int MIN_X = -bn::display::width() / 2;
-    static constexpr int MAX_X = bn::display::width() / 2;
+        public:
+        //constructor
+        Squid(bn::fixed_point starting_position, bn::fixed speed);
 
-    public:
-    //constructor
-    Squid(bn::fixed_point starting_position, bn::fixed speed);
+        //getter functions
+        bn::sprite_ptr get_sprite();
+        bn::rect get_squid_hit_box();
 
-    bn::sprite_ptr get_sprite();
+        void update();
+        bool out_of_bounds() const;
 
-    void update();
+        private:
+        // The sprite to display the player
+        bn::sprite_ptr _sprite;
+        bn::rect _squid_hit_box;    
+        bn::fixed _speed;
 
-    bool out_of_bounds() const;
+        //direction number
+        int direction;
 
-    private:
-
-    // The sprite to display the player
-    bn::sprite_ptr _sprite;
-
-    // bn::rect squid_hit_box();
-    bn::rect squid_hit_box;
-    
-    bn::fixed _speed;
-
-    //direction number
-    int direction;
-
-
-    //if statemenst for the squids direction goes here
-
-    /**
-     * Reads from the d-pad and moves the player by one frame accordingly.
-     */
-    void _update_position();
-
-};
+        //if statemenst for the squids direction goes here
+        /**
+         * Reads from the d-pad and moves the player by one frame accordingly.
+         */
+        void _update_position();
+    };
 }
