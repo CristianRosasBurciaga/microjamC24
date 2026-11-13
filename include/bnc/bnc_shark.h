@@ -17,7 +17,6 @@ namespace bnc {
 
     //Speed and Max number of Sharks that can spawn in the game;
     static constexpr bn::fixed SHARK_SPEED = 0.5;
-    static constexpr int MAX_SHARKS = 4;
 
     bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
@@ -44,5 +43,6 @@ namespace bnc {
         bn::rect _shark_hit_box;
         bn::fixed _shark_speed;
         bn::size _shark_size;
+        int _max_sharks;
     };
 }
