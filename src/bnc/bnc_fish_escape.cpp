@@ -39,8 +39,13 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _squid(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED) 
-    {}
+    _squid(bn::fixed_point(X_START, Y_START), SPEED) 
+    {
+        _shark_vector.push_back(Shark(
+            data.random.get_unbiased_fixed(MIN_X, MAX_X),
+            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
+            SHARK_SPEED));
+    };
 
     /**
  * The instructions given to the player at the beginning of the microgame.
@@ -75,12 +80,12 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
     // update the player position
     _squid.update();
 
-    _shark.update(_squid);
+    _shark_vector[i].update(_squid);
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
     // The title is not hidden early (false is passed), so the title disappears at the default time
-    mj::game_result result(victory() || _shark._shark_collision(), false);
+    mj::game_result result(victory() || _shark_vector._shark_collision(), false);
     return result;
 }
 
