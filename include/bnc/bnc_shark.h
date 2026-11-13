@@ -35,6 +35,7 @@ namespace bnc {
         //getter functions
         void update(Squid& squid);
         bool collide(Squid& squid);
+        bn::fixed get_max_sharks();
         bool _shark_collision() const;
 
         private:
@@ -43,6 +44,6 @@ namespace bnc {
         bn::rect _shark_hit_box;
         bn::fixed _shark_speed;
         bn::size _shark_size;
-        int _max_sharks;
+        bn::fixed _max_sharks;
     };
 }
