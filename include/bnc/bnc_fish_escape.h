@@ -78,6 +78,10 @@ namespace bnc {
         //shark vector
         bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
 
+        // Returns progressively more sharks the harder the difficulty
+        bn::fixed _shark_increase(mj::difficulty_level difficulty);
+
+
 
 
     };
