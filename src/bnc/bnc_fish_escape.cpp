@@ -80,12 +80,26 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
     // update the player position
     _squid.update();
 
-    _shark_vector[i].update(_squid);
+    //add another boolean for individual sharks
+    bool _caught_squid = false;
+    
+    //add the for loop to loop over enemies
+    for(int i = 0; i< _shark_vector.size(); i++){
+        //update the vector to the players location using the index
+        _shark_vector[i].update(_squid);
+
+
+        // Reset the current score and player position if the player collides with enemy
+        if(_shark_vector[i]._shark_collision() == true) {
+
+            _caught_squid = true;
+        }
+    }
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
     // The title is not hidden early (false is passed), so the title disappears at the default time
-    mj::game_result result(victory() || _shark_vector._shark_collision(), false);
+    mj::game_result result(victory() || _caught_squid, false);
     return result;
 }
 
@@ -118,4 +132,5 @@ void bnc_fish_escape::fade_out([[maybe_unused]] const mj::game_data& data)
 
 
 
+}
 }
