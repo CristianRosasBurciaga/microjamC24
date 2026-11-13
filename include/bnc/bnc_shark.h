@@ -37,9 +37,6 @@ class Shark {
 
     void update(Squid& squid);
     bool collide(Squid& squid);
-    // bn::fixed random_X_Point(int min, int max);
-    // bn::fixed random_Y_Point(int min, int max);
-
     bool _shark_collision() const; //a get for the private bool
 
     private:
