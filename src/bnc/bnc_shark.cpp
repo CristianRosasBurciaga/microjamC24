@@ -19,13 +19,13 @@ namespace bnc{
 
     
 
-    bn::fixed Shark::random_X_Point(int min, int max) {
-        // return mj::mj_game_data::random.get_unbiased_fixed(min, max);
-    }  
+    // bn::fixed Shark::random_X_Point(int min, int max) {
+    //     // return mj::mj_game_data::random.get_unbiased_fixed(min, max);
+    // }  
     
-    bn::fixed Shark::random_Y_Point(int min, int max) {
-        // return .get_unbiased_fixed(min, max);
-    }  
+    // bn::fixed Shark::random_Y_Point(int min, int max) {
+    //     // return .get_unbiased_fixed(min, max);
+    // }  
 
     bool Shark::_shark_collision() const {
         return shark_collision;
