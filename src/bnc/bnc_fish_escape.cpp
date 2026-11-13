@@ -5,7 +5,7 @@
 #include "bn_sprite_ptr.h"
 
 #include "mj/mj_game_list.h"
-#include "bnc/bnc_minnow.h"
+#include "bnc/bnc_squid.h"
 #include "bnc/bnc_shark.h"
 
 
@@ -39,7 +39,7 @@ namespace bnc
  */
     bnc_fish_escape::bnc_fish_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) :
     mj::game("bnc"), 
-    _minnow(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED) 
+    _squid(bn::fixed_point(X_START, Y_START), SPEED), _shark(_shark.random_X_Point(MIN_X, MAX_Y), _shark.random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED) 
     {}
 
     /**
@@ -48,10 +48,10 @@ namespace bnc
  * Must be <= 16 characters long
  */
     bn::string<16> bnc_fish_escape::title() const {
-    return "Swim fish! Swim!";
+    return "Avoid the Whales!";
 }
 
-/**
+/*
  * How long the timer for the game should be set to in frames.
  * 
  * GBA runs at approx 60 frames per second.
@@ -73,9 +73,9 @@ int bnc_fish_escape::total_frames() const {
 mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data)
 {
     // update the player position
-    _minnow.update();
+    _squid.update();
 
-    _shark.update(_minnow);
+    _shark.update(_squid);
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
@@ -90,7 +90,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
  * In this particular microgame the player wins if they make the ball leave the screen.
  */
 bool bnc_fish_escape::victory() const {
-    return _minnow.out_of_bounds();
+    return _squid.out_of_bounds();
 }
 
 /**

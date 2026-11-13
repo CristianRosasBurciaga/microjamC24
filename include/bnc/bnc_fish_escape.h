@@ -1,7 +1,7 @@
 #pragma once 
 
 #include "mj/mj_game.h"
-#include "bnc/bnc_minnow.h"
+#include "bnc/bnc_squid.h"
 #include "bnc/bnc_shark.h"
 
 
@@ -73,7 +73,7 @@ namespace bnc {
 
         private:
         // The character that the player can move
-        Minnow _minnow;
+        Squid _squid;
 
         //enemy player tries to avoid
         Shark _shark;

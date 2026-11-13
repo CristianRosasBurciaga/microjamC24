@@ -34,8 +34,8 @@ class Shark {
     //constructor
     Shark(bn::fixed x, bn::fixed y, bn::fixed speed);
 
-    void update(Minnow& minnow);
-    bool collide(Minnow& minnow);
+    void update(Squid& squid);
+    bool collide(Squid& squid);
     bn::fixed random_X_Point(int min, int max);
     bn::fixed random_Y_Point(int min, int max);
 
