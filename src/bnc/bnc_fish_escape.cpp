@@ -3,7 +3,7 @@
 #include "bn_keypad.h"
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
-
+#include <bn_log.h>
 #include "mj/mj_game_list.h"
 #include "bnc/bnc_squid.h"
 #include "bnc/bnc_shark.h"
@@ -41,11 +41,12 @@ namespace bnc
     mj::game("bnc"), 
     _squid(bn::fixed_point(X_START, Y_START), SPEED) 
     {
-        if(_shark_vector.size() < _shark_vector.max_size() ) {
+        while(_shark_vector.size() < _shark_vector.max_size() ) {
              _shark_vector.push_back(Shark(
             data.random.get_unbiased_fixed(MIN_X, MAX_X),
             data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             SHARK_SPEED));
+            BN_LOG("shark created");
              }
     };
 
