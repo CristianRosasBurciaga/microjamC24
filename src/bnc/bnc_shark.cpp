@@ -11,10 +11,10 @@
 
 namespace bnc{
 
-    Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed, bn::fixed max_sharks) :
+    Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
     _shark(bn::sprite_items::bnc_shark.create_sprite(x, y)),
     _shark_hit_box(create_bounding_box(_shark, SHARK_SIZE)),
-    _shark_speed(speed), _max_sharks(max_sharks), _shark_size(SHARK_SIZE)
+    _shark_speed(speed), _shark_size(SHARK_SIZE)
     {}
 
 
@@ -24,12 +24,6 @@ namespace bnc{
 
 
     void Shark::update(Squid& squid) {
-
-        // if(_shark_vector.size() < _shark_vector.max_size()) {
-        //      _shark_vector.push_back(Shark(random_X_Point(MIN_X, MAX_X), random_Y_Point(MIN_Y, MAX_Y), SHARK_SPEED));
-        //     BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
-        //       }
-
         if(_shark.x() < squid.get_sprite().x()){
             _shark.set_x(_shark.x() + _shark_speed);
         }

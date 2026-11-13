@@ -30,8 +30,8 @@ namespace bnc {
 
         public:
         //constructor
-        Shark(bn::fixed x, bn::fixed y, bn::fixed speed, bn::fixed max_sharks);
-        
+        Shark(bn::fixed x, bn::fixed y, bn::fixed speed);
+    
         //getter functions
         void update(Squid& squid);
         bool collide(Squid& squid);
