@@ -41,10 +41,12 @@ namespace bnc
     mj::game("bnc"), 
     _squid(bn::fixed_point(X_START, Y_START), SPEED) 
     {
-        _shark_vector.push_back(Shark(
+        if(_shark_vector.size() < _shark_vector.max_size() ) {
+             _shark_vector.push_back(Shark(
             data.random.get_unbiased_fixed(MIN_X, MAX_X),
             data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             SHARK_SPEED));
+             }
     };
 
     /**
@@ -87,7 +89,6 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
     for(int i = 0; i< _shark_vector.size(); i++){
         //update the vector to the players location using the index
         _shark_vector[i].update(_squid);
-
 
         // Reset the current score and player position if the player collides with enemy
         if(_shark_vector[i]._shark_collision() == true) {
