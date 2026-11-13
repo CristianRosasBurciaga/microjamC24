@@ -9,6 +9,7 @@
 #include <bn_size.h>
 #include <bn_random.h>
 #include <bn_fixed.h>
+#include <bn_vector.h>
 
 
 
@@ -43,6 +44,7 @@ class Shark {
 
     private:
     bool shark_collision = false;
+    bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
     bn::sprite_ptr _shark;
     bn::rect _shark_hit_box;
     bn::fixed _shark_speed;

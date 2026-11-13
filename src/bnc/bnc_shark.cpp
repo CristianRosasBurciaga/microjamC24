@@ -1,7 +1,7 @@
 #include "bnc/bnc_shark.h"
 #include "bnc/bnc_fish_escape.h"
 #include "bn_sprite_items_shark.h"
-#include "mj/mj_game_result.h"
+#include "mj/mj_game_data.h"
 #include <bn_log.h>
 #include "bnc/bnc_squid.h"
 #include <bn_vector.h>
@@ -19,18 +19,17 @@ namespace bnc{
 
     
 
-
     bn::fixed Shark::random_X_Point(int min, int max) {
-        return random.get_unbiased_fixed(min, max);
+        // return mj::mj_game_data::random.get_unbiased_fixed(min, max);
     }  
     
     bn::fixed Shark::random_Y_Point(int min, int max) {
-        return random.get_unbiased_fixed(min, max);
+        // return .get_unbiased_fixed(min, max);
     }  
 
-            bool Shark::_shark_collision() const {
-            return shark_collision;
-        }
+    bool Shark::_shark_collision() const {
+        return shark_collision;
+    }
 
 
     void Shark::update(Squid& squid) {
@@ -40,19 +39,19 @@ namespace bnc{
             BN_LOG(random_X_Point(MIN_X, MAX_X), " ", random_Y_Point(MIN_Y, MAX_Y));
               }
 
-        if(_shark.x() < squid._sprite.x()){
+        if(_shark.x() < squid.get_sprite().x()){
             _shark.set_x(_shark.x() + _shark_speed);
         }
 
-        if(_shark.x() > squid._sprite.x()){
+        if(_shark.x() > squid.get_sprite().x()){
             _shark.set_x(_shark.x() - _shark_speed);
         }
 
-        if(_shark.y() > squid._sprite.y()){
+        if(_shark.y() > squid.get_sprite().y()){
             _shark.set_y(_shark.y() - _shark_speed);
         }
 
-        if(_shark.y() < squid._sprite.y()){
+        if(_shark.y() < squid.get_sprite().y()){
             _shark.set_y(_shark.y() + _shark_speed);
         }
 
