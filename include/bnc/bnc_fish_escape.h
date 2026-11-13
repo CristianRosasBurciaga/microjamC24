@@ -76,6 +76,7 @@ namespace bnc {
         Squid _squid;
 
         //shark vector
+        static constexpr int MAX_SHARKS = 9;
         bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
 
         // Returns progressively more sharks the harder the difficulty
