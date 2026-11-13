@@ -59,6 +59,15 @@ namespace bnc
     return "Avoid Whales!";
 }
 
+bn::fixed bnc_fish_escape::_shark_increase(mj::difficulty_level difficulty) {
+    if(difficulty == mj::difficulty_level::EASY) {
+        return 3;
+    } else if (difficulty == mj::difficulty_level::NORMAL) {
+        return 6;
+    } 
+    return 9;
+}
+
 /*
  * How long the timer for the game should be set to in frames.
  * 

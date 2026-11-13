@@ -80,9 +80,5 @@ namespace bnc {
 
         // Returns progressively more sharks the harder the difficulty
         bn::fixed _shark_increase(mj::difficulty_level difficulty);
-
-
-
-
     };
 }
