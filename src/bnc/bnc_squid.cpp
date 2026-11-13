@@ -20,6 +20,10 @@ namespace bnc {
         _speed(speed)
         {}
 
+        bn::sprite_ptr Squid::get_sprite() {
+            return _sprite;
+        }
+
          bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
     return bn::rect(sprite.x().round_integer(),
                     sprite.y().round_integer(),

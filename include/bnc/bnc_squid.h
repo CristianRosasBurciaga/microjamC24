@@ -31,6 +31,8 @@ class Squid {
     //constructor
     Squid(bn::fixed_point starting_position, bn::fixed speed);
 
+    bn::sprite_ptr get_sprite();
+
     void update();
 
     bool out_of_bounds() const;
