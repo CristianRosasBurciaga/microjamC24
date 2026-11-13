@@ -79,6 +79,7 @@ namespace bnc {
         bn::vector<Shark, > _shark_vector = {};
 
         // Returns progressively more sharks the harder the difficulty
-        bn::fixed _shark_increase(mj::difficulty_level difficulty);
+        int _shark_increase(mj::difficulty_level difficulty);
+
     };
 }
