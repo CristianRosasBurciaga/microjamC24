@@ -2,7 +2,7 @@
 
 #include "mj/mj_game.h"
 #include "bnc/bnc_squid.h"
-#include "bnc/bnc_shark.h"
+#include "bnc/bnc_whale.h"
 
 
 namespace bnc {

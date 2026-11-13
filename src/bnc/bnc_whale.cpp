@@ -1,5 +1,5 @@
-#include "bnc/bnc_shark.h"
-#include "bnc/bnc_fish_escape.h"
+#include "bnc/bnc_whale.h"
+#include "bnc/bnc_squid_escape.h"
 #include "bn_sprite_items_bnc_whale.h"
 #include "mj/mj_game_data.h"
 #include <bn_log.h>

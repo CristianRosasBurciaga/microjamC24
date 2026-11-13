@@ -1,4 +1,4 @@
-#include "bnc_fish_escape.h"
+#include "bnc_squid_escape.h"
 
 #include "bn_keypad.h"
 #include "bn_display.h"
@@ -6,7 +6,7 @@
 #include <bn_log.h>
 #include "mj/mj_game_list.h"
 #include "bnc/bnc_squid.h"
-#include "bnc/bnc_shark.h"
+#include "bnc/bnc_whale.h"
 
 
 // String arrays for the credits can go in an anonymous namespace
