@@ -43,12 +43,12 @@ namespace bnc
         _squid(bn::fixed_point(X_START, Y_START), SPEED)
     {
 
-        while(_shark_vector.size() < _shark_increase(recommended_difficulty_level(completed_games * 9, data))) {
+        while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games * 9, data))) {
 
-            _shark_vector.push_back(Shark(
+            _whale_vector.push_back(Whale(
             data.random.get_unbiased_fixed(MIN_X, MAX_X),
             data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
-            SHARK_SPEED));
+            WHALE_SPEED));
 
         }
     };
@@ -62,7 +62,7 @@ namespace bnc
     return "Avoid Whales!";
 }
 
-int bnc_fish_escape::_shark_increase(mj::difficulty_level difficulty) {
+int bnc_fish_escape::_whale_increase(mj::difficulty_level difficulty) {
     if(difficulty == mj::difficulty_level::EASY) {
         return 3;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
@@ -99,12 +99,12 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
     bool _caught_squid = false;
     
     //add the for loop to loop over enemies
-    for(int i = 0; i< _shark_vector.size(); i++){
+    for(int i = 0; i< _whale_vector.size(); i++){
         //update the vector to the players location using the index
-        _shark_vector[i].update(_squid);
+        _whale_vector[i].update(_squid);
 
         // Reset the current score and player position if the player collides with enemy
-        if(_shark_vector[i]._shark_collision() == true) {
+        if(_whale_vector[i]._whale_collision() == true) {
 
             _caught_squid = true;
         }

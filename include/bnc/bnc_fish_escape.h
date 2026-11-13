@@ -7,7 +7,7 @@
 
 namespace bnc {
 
-    static constexpr int MAX_SHARKS = 9;
+    static constexpr int MAX_WHALES = 9;
 
 
     /**
@@ -79,13 +79,13 @@ namespace bnc {
         Squid _squid;
 
         //shark vector
-        static constexpr int MAX_SHARKS = 9;
+        static constexpr int MAX_WHALES = 9;
         
         //shark vector;
-        bn::vector<Shark, MAX_SHARKS> _shark_vector = {};
+        bn::vector<Whale, MAX_WHALES> _whale_vector = {};
 
         // Returns progressively more sharks the harder the difficulty
-        int _shark_increase(mj::difficulty_level difficulty);
+        int _whale_increase(mj::difficulty_level difficulty);
 
     };
 }

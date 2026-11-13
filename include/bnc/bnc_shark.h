@@ -13,10 +13,10 @@
 
 namespace bnc {
     // Width and height of the the player bounding box
-    static constexpr bn::size SHARK_SIZE = {8, 8};
+    static constexpr bn::size WHALE_SIZE = {8, 8};
 
-    //Speed and Max number of Sharks that can spawn in the game;
-    static constexpr bn::fixed SHARK_SPEED = 0.5;
+    //Speed and Max number of Whale that can spawn in the game;
+    static constexpr bn::fixed WHALE_SPEED = 0.5;
 
     bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 
@@ -25,24 +25,23 @@ namespace bnc {
     static constexpr int MAX_Y = bn::display::height() / 2;
     static constexpr int MIN_Y = - bn::display::height() / 2;
 
-    class Shark {
+    class Whale {
 
 
         public:
         //constructor
-        Shark(bn::fixed x, bn::fixed y, bn::fixed speed);
+        Whale(bn::fixed x, bn::fixed y, bn::fixed speed);
     
         //getter functions
         void update(Squid& squid);
         bool collide(Squid& squid);
-        bool _shark_collision() const;
+        bool _whale_collision() const;
 
         private:
-        bool shark_collision = false;
-        bn::sprite_ptr _shark;
-        bn::rect _shark_hit_box;
-        bn::fixed _shark_speed;
-        bn::size _shark_size;
-        bn::fixed _max_sharks;
+        bool whale_collision = false;
+        bn::sprite_ptr _whale;
+        bn::rect _whale_hit_box;
+        bn::fixed _whale_speed;
+        bn::size _whale_size;
     };
 }

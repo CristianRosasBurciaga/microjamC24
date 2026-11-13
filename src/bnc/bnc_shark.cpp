@@ -11,39 +11,39 @@
 
 namespace bnc{
 
-    Shark::Shark(bn::fixed x, bn::fixed y, bn::fixed speed) :
-    _shark(bn::sprite_items::bnc_shark.create_sprite(x, y)),
-    _shark_hit_box(create_bounding_box(_shark, SHARK_SIZE)),
-    _shark_speed(speed), _shark_size(SHARK_SIZE)
+    Whale::Whale(bn::fixed x, bn::fixed y, bn::fixed speed) :
+    _whale(bn::sprite_items::bnc_shark.create_sprite(x, y)),
+    _whale_hit_box(create_bounding_box(_whale, WHALE_SIZE)),
+    _whale_speed(speed), _whale_size(WHALE_SIZE)
     {}
 
 
-    bool Shark::_shark_collision() const {
-        return shark_collision;
+    bool Whale::_whale_collision() const {
+        return whale_collision;
     }
 
 
-    void Shark::update(Squid& squid) {
-        if(_shark.x() < squid.get_sprite().x()){
-            _shark.set_x(_shark.x() + _shark_speed);
+    void Whale::update(Squid& squid) {
+        if(_whale.x() < squid.get_sprite().x()){
+            _whale.set_x(_whale.x() + _whale_speed);
         }
 
-        if(_shark.x() > squid.get_sprite().x()){
-            _shark.set_x(_shark.x() - _shark_speed);
+        if(_whale.x() > squid.get_sprite().x()){
+            _whale.set_x(_whale.x() - _whale_speed);
         }
 
-        if(_shark.y() > squid.get_sprite().y()){
-            _shark.set_y(_shark.y() - _shark_speed);
+        if(_whale.y() > squid.get_sprite().y()){
+            _whale.set_y(_whale.y() - _whale_speed);
         }
 
-        if(_shark.y() < squid.get_sprite().y()){
-            _shark.set_y(_shark.y() + _shark_speed);
+        if(_whale.y() < squid.get_sprite().y()){
+            _whale.set_y(_whale.y() + _whale_speed);
         }
 
-        _shark_hit_box = create_bounding_box(_shark, SHARK_SIZE);
+        _whale_hit_box = create_bounding_box(_whale, WHALE_SIZE);
         
-        if(_shark_hit_box.intersects(squid.get_squid_hit_box())){
-            shark_collision = true;
+        if(_whale_hit_box.intersects(squid.get_squid_hit_box())){
+            whale_collision = true;
         }
 
 
