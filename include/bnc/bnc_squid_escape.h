@@ -1,5 +1,7 @@
 #pragma once 
 
+#include <bn_regular_bg_ptr.h>
+
 #include "mj/mj_game.h"
 #include "bnc/bnc_squid.h"
 #include "bnc/bnc_whale.h"
@@ -78,6 +80,8 @@ namespace bnc {
         // The character that the player can move
         Squid _squid;
 
+        //background
+        bn::regular_bg_ptr _background;
         //shark vector
         static constexpr int MAX_WHALES = 9;
         

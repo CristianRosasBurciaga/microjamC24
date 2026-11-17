@@ -8,6 +8,9 @@
 #include "bnc/bnc_squid.h"
 #include "bnc/bnc_whale.h"
 
+#include "bn_regular_bg_items_bnc_ocean_bg.h"
+
+
 
 // String arrays for the credits can go in an anonymous namespace
 namespace
@@ -40,7 +43,9 @@ namespace bnc
     bnc_fish_escape::bnc_fish_escape(
         [[maybe_unused]] int completed_games,
         [[maybe_unused]] const mj::game_data& data) : mj::game("bnc"), 
-        _squid(bn::fixed_point(X_START, Y_START), SPEED)
+        _squid(bn::fixed_point(X_START, Y_START), SPEED),
+        _background(bn::regular_bg_items::bnc_ocean_bg.create_bg())
+
     {
 
         while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games * 9, data))) {
