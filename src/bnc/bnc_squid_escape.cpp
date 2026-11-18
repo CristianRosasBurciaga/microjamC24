@@ -47,11 +47,13 @@ namespace bnc
         _background(bn::regular_bg_items::bnc_ocean_bg.create_bg())
 
     {
-
+        //check if whale collides with squid
+        //if yes, do new random numbers
+        //while loop this 
         while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games * 9, data))) {
 
             _whale_vector.push_back(Whale(
-            data.random.get_unbiased_fixed(MIN_X, MAX_X),
+            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             WHALE_SPEED));
 
