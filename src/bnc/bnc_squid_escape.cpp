@@ -68,12 +68,19 @@ namespace bnc
 }
 
 int bnc_fish_escape::_whale_increase(mj::difficulty_level difficulty) {
+    // enemy_timer = 60;
+    // if(enemy_timer > 0){
+    // enemy_timer--;
+    // }
+    // if(enemy_timer == 0){
     if(difficulty == mj::difficulty_level::EASY) {
-        return 3;
+        return 2;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
-        return 4;
+        return 3;
     } 
     return 5;
+    //}
+    //return enemy_timer;
 }
 
 /*
@@ -110,7 +117,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
 
         // Reset the current score and player position if the player collides with enemy
         if(_whale_vector[i]._whale_collision() == true) {
-
+            //enemy_timer = 60;
             _caught_squid = true;
         }
     }

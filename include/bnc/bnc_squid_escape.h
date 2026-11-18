@@ -77,6 +77,8 @@ namespace bnc {
         void fade_out(const mj::game_data& data) override;
 
         private:
+
+        //int enemy_timer = 0;
         // The character that the player can move
         Squid _squid;
 

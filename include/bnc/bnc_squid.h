@@ -21,10 +21,11 @@ namespace bnc {
 
     class Squid {
 
-        static constexpr int MIN_Y = -bn::display::height() / 2;
-        static constexpr int MAX_Y = bn::display::height() / 2;
-        static constexpr int MIN_X = -bn::display::width() / 2;
-        static constexpr int MAX_X = bn::display::width() / 2;
+    static constexpr int MAX_X = bn::display::width() / 2;
+    static constexpr int MIN_X = - bn::display::width() / 2;
+    static constexpr int MAX_Y = bn::display::height() / 2;
+    static constexpr int MIN_Y = - bn::display::height() / 2;
+
 
         public:
         //constructor
