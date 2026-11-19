@@ -8,10 +8,6 @@
 
 
 namespace bnc {
-
-    static constexpr int MAX_WHALES = 9;
-
-
     /**
  * bnc is a class representing a microgame where the player must leave the screen.
  * 
