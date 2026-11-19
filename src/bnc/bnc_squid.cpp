@@ -13,8 +13,8 @@ namespace bnc {
         {}
 
     //returns squid's sprite pointer
-    bn::sprite_ptr Squid::get_sprite() {
-        return _sprite;
+    bn::fixed_point Squid::get_position() {
+        return bn::fixed_point(_sprite.x(), _sprite.y());
     }
 
     //returns squid's hit box
@@ -68,30 +68,30 @@ namespace bnc {
         //Conditional statements for direction change
         //add direction checker
         if(bn::keypad::left_held()) {
-            if (direction != 1){
+            if (_direction != 1){
                 _sprite = bn::sprite_items::bnc_squid_left.create_sprite(_sprite.x(), _sprite.y());
-                direction = 1;
+                _direction = 1;
             }
             _sprite.set_x(_sprite.x() - _speed);
         }
         if(bn::keypad::right_held()) {
-            if (direction != 0){
+            if (_direction != 0){
                 _sprite = bn::sprite_items::bnc_squid_right.create_sprite(_sprite.x(), _sprite.y());
-                direction = 0;
+                _direction = 0;
             }
             _sprite.set_x(_sprite.x() + _speed);
         }
         if(bn::keypad::up_held()) {
-            if (direction != 2){
+            if (_direction != 2){
                 _sprite = bn::sprite_items::bnc_squid_up.create_sprite(_sprite.x(), _sprite.y());
-                direction = 2;
+                _direction = 2;
             }
             _sprite.set_y(_sprite.y() - _speed);
         }
         if(bn::keypad::down_held()) {
-            if (direction != 4){
+            if (_direction != 4){
                 _sprite = bn::sprite_items::bnc_squid_down.create_sprite(_sprite.x(), _sprite.y());
-                direction = 4;
+                _direction = 4;
             }
             _sprite.set_y(_sprite.y() + _speed);
         }

@@ -40,22 +40,16 @@ namespace bnc
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
     bnc_squid_escape::bnc_squid_escape(
-        [[maybe_unused]] int completed_games,
-        [[maybe_unused]] const mj::game_data& data) : mj::game("bnc"), 
-        _squid(bn::fixed_point(X_START, Y_START), SPEED),
-        _background(bn::regular_bg_items::bnc_ocean_bg.create_bg())
-
+        int completed_games,
+        const mj::game_data& data) : mj::game("bnc"), 
+        _squid(bn::fixed_point(X_START, Y_START), SPEED)
     {
-        //check if whale collides with squid
-        //if yes, do new random numbers
-        //while loop this 
-        while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games * 9, data))) {
 
+        while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games, data))) {
             _whale_vector.push_back(Whale(
             data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
             data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
             WHALE_SPEED));
-
         }
     };
 
@@ -69,11 +63,6 @@ namespace bnc
 }
 
 int bnc_squid_escape::_whale_increase(mj::difficulty_level difficulty) {
-    // enemy_timer = 60;
-    // if(enemy_timer > 0){
-    // enemy_timer--;
-    // }
-    // if(enemy_timer == 0){
     if(difficulty == mj::difficulty_level::EASY) {
         return 2;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
@@ -89,9 +78,9 @@ int bnc_squid_escape::_whale_increase(mj::difficulty_level difficulty) {
  * 
  * GBA runs at approx 60 frames per second.
  */
-int bnc_squid_escape::total_frames() const {
-    return 600; // 300 frames at 60fps = 5 seconds
-}
+    int bnc_squid_escape::total_frames() const {
+        return 600; 
+    }
 
 /**
  * play is repeatedly called while the microgame is playing.
@@ -116,21 +105,18 @@ mj::game_result bnc_squid_escape::play([[maybe_unused]] const mj::game_data& dat
         //update the vector to the players location using the index
         _whale_vector[i].update(_squid);
 
-        // Reset the current score and player position if the player collides with enemy
-        if(_whale_vector[i]._whale_collision() == true) {
-            //enemy_timer = 60;
+        if(_whale_vector[i].get_whale_collision()) {
+
             _caught_squid = true;
         }
     }
 
-    // Creates a game result indicating whether the game is finished and whether the title should be hidden early
-    // For this game the game should end early if the player has won (if victory returns true)
-    // The title is not hidden early (false is passed), so the title disappears at the default time
     mj::game_result result(victory() || _caught_squid, false);
     return result;
 }
 
-/**
+
+ /**
  * Returns whether the player has won the microgame.
  * 
  * In this particular microgame the player wins if they make the ball leave the screen.
@@ -144,18 +130,18 @@ bool bnc_squid_escape::victory() const {
  * 
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
-void bnc_squid_escape::fade_in([[maybe_unused]] const mj::game_data& data)
-{
-}
+    void bnc_squid_escape::fade_in([[maybe_unused]] const mj::game_data& data)
+    {
+    }
 
 /**
  * Called repeatedly as the game fades into view. Unused for this particular microgame.
  * 
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
-void bnc_squid_escape::fade_out([[maybe_unused]] const mj::game_data& data)
-{
-}
+    void bnc_squid_escape::fade_out([[maybe_unused]] const mj::game_data& data)
+    {
+    }
 
 
 
