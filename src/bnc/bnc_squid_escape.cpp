@@ -47,8 +47,8 @@ namespace bnc
 
         while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games, data))) {
             _whale_vector.push_back(Whale(
-            data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
-            data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
+            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
+            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             WHALE_SPEED));
         }
     };
