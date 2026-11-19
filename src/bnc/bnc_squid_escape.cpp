@@ -3,7 +3,6 @@
 #include "bn_keypad.h"
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
-#include <bn_log.h>
 #include "mj/mj_game_list.h"
 #include "bnc/bnc_squid.h"
 #include "bnc/bnc_whale.h"
@@ -22,7 +21,7 @@ namespace
 }
 
 // Macros used to add game to game list
-MJ_GAME_LIST_ADD(bnc::bnc_fish_escape) // The class of the game is used here
+MJ_GAME_LIST_ADD(bnc::bnc_squid_escape) // The class of the game is used here
 MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
 MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
 MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
@@ -33,14 +32,14 @@ namespace bnc
 {
 
     /**
- * Constructor for an instance of an bnc_fish_escape
+ * Constructor for an instance of an bnc_squid_escape
  * 
  * First item in the initializer list MUST be a call to the superclass, mj::game with the identifier for the microgame.
  * 
  * @param completed_games how many microgames the player has completed so far
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
-    bnc_fish_escape::bnc_fish_escape(
+    bnc_squid_escape::bnc_squid_escape(
         [[maybe_unused]] int completed_games,
         [[maybe_unused]] const mj::game_data& data) : mj::game("bnc"), 
         _squid(bn::fixed_point(X_START, Y_START), SPEED),
@@ -53,8 +52,8 @@ namespace bnc
         while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games * 9, data))) {
 
             _whale_vector.push_back(Whale(
-            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
-            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
+            data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
+            data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
             WHALE_SPEED));
 
         }
@@ -65,11 +64,11 @@ namespace bnc
  * 
  * Must be <= 16 characters long
  */
-    bn::string<16> bnc_fish_escape::title() const {
+    bn::string<16> bnc_squid_escape::title() const {
     return "Swim across -->";
 }
 
-int bnc_fish_escape::_whale_increase(mj::difficulty_level difficulty) {
+int bnc_squid_escape::_whale_increase(mj::difficulty_level difficulty) {
     // enemy_timer = 60;
     // if(enemy_timer > 0){
     // enemy_timer--;
@@ -90,7 +89,7 @@ int bnc_fish_escape::_whale_increase(mj::difficulty_level difficulty) {
  * 
  * GBA runs at approx 60 frames per second.
  */
-int bnc_fish_escape::total_frames() const {
+int bnc_squid_escape::total_frames() const {
     return 600; // 300 frames at 60fps = 5 seconds
 }
 
@@ -104,7 +103,7 @@ int bnc_fish_escape::total_frames() const {
  * @param data shared information, such as a rng and number of frames left in the microgame
  * @return the mj::game result indicating whether the game has finished and whether the title should be hidden
  */
-mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data)
+mj::game_result bnc_squid_escape::play([[maybe_unused]] const mj::game_data& data)
 {
     // update the player position
     _squid.update();
@@ -136,7 +135,7 @@ mj::game_result bnc_fish_escape::play([[maybe_unused]] const mj::game_data& data
  * 
  * In this particular microgame the player wins if they make the ball leave the screen.
  */
-bool bnc_fish_escape::victory() const {
+bool bnc_squid_escape::victory() const {
     return _squid.out_of_bounds();
 }
 
@@ -145,7 +144,7 @@ bool bnc_fish_escape::victory() const {
  * 
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
-void bnc_fish_escape::fade_in([[maybe_unused]] const mj::game_data& data)
+void bnc_squid_escape::fade_in([[maybe_unused]] const mj::game_data& data)
 {
 }
 
@@ -154,7 +153,7 @@ void bnc_fish_escape::fade_in([[maybe_unused]] const mj::game_data& data)
  * 
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
-void bnc_fish_escape::fade_out([[maybe_unused]] const mj::game_data& data)
+void bnc_squid_escape::fade_out([[maybe_unused]] const mj::game_data& data)
 {
 }
 

@@ -17,16 +17,16 @@ namespace bnc {
  * 
  * Like all microgames, it is a public subclass of mj::game
  */
-    class bnc_fish_escape : public mj::game {
+    class bnc_squid_escape : public mj::game {
 
         public:
          /**
-         * Constructor for an instance of an bnc_fish_escape
+         * Constructor for an instance of an bnc_squid_escape
          * 
          * @param completed_games how many microgames the player has completed so far
          * @param data shared information, such as a rng and number of frames left in the microgame
          */
-        bnc_fish_escape(int completed_games, const mj::game_data& data);
+        bnc_squid_escape(int completed_games, const mj::game_data& data);
 
         /**
          * The instructions given to the player at the beginning of the microgame.

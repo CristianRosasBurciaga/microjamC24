@@ -19,11 +19,11 @@ namespace bnc {
     static constexpr bn::fixed WHALE_SPEED = 0.5;
 
     bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
-        static constexpr int MIN_Y = -bn::display::height() / 2;
-        static constexpr int MAX_Y = bn::display::height() / 2;
+        static constexpr int WHALE_MIN_Y = -bn::display::height() / 2;
+        static constexpr int WHALE_MAX_Y = bn::display::height() / 2;
         
-        static constexpr int MIN_X = -80;
-        static constexpr int MAX_X = bn::display::width() / 2;
+        static constexpr int WHALE_MIN_X = -60;
+        static constexpr int WHALE_MAX_X = bn::display::width() / 2;
 
 
     class Whale {
