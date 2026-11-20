@@ -82,5 +82,7 @@ namespace bnc {
         // Returns progressively more whales the harder the difficulty
         int _whale_increase(mj::difficulty_level difficulty);
 
+        //timer that will indicate when the game starts
+        int timer;
     };
 }

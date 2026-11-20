@@ -1,4 +1,5 @@
-
+#include <bn_fixed.h>
+#include <bn_sprite_ptr.h>
 
 namespace bnc {
 
@@ -12,6 +13,6 @@ namespace bnc {
         bn::sprite_ptr _bubble;
         bn::fixed _bubble_speed;
 
-    }
+    };
 }
 
