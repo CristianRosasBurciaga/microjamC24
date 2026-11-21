@@ -6,6 +6,7 @@
 #include "mj/mj_game_list.h"
 #include "bnc/bnc_squid.h"
 #include "bnc/bnc_whale.h"
+#include <bn_log.h>
 
 #include "bn_regular_bg_items_bnc_ocean_bg.h"
 
@@ -45,11 +46,25 @@ namespace bnc
         _squid(bn::fixed_point(X_START, Y_START), SPEED)
     {
 
-        while(_whale_vector.size() < _whale_increase(recommended_difficulty_level(completed_games, data))) {
+        for(int i = 0; i <_whale_increase(recommended_difficulty_level(completed_games, data)); i++) {
             _whale_vector.push_back(Whale(
-            data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
-            data.random.get_unbiased_fixed(WHALE_MIN_Y, WHALE_MAX_Y),
+            data.random.get_unbiased_fixed(MIN_X, MAX_X),
+            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             WHALE_SPEED));
+
+            //TODO: 
+            //Change logic to measure the difference in pixels between whale and squid
+            //If whales are too close, relocate them
+            if(_whale_vector[i].get_whale_collision()) {
+                BN_LOG("whale on top");
+                _whale_vector.pop_back();
+                BN_LOG("remove from vector");
+                _whale_vector.push_back(Whale(
+            data.random.get_unbiased_fixed(MIN_X, MAX_X),
+            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
+            WHALE_SPEED));
+            BN_LOG("added new whale");
+            }
         }
     };
 
@@ -69,8 +84,6 @@ int bnc_squid_escape::_whale_increase(mj::difficulty_level difficulty) {
         return 3;
     } 
     return 5;
-    //}
-    //return enemy_timer;
 }
 
 /*
@@ -94,25 +107,23 @@ int bnc_squid_escape::_whale_increase(mj::difficulty_level difficulty) {
  */
 mj::game_result bnc_squid_escape::play([[maybe_unused]] const mj::game_data& data)
 {
-    // update the player position
-    _squid.update();
+        // update the player position
+        _squid.update();
 
-    //add another boolean for individual sharks
-    bool _caught_squid = false;
-    
-    //add the for loop to loop over enemies
-    for(int i = 0; i< _whale_vector.size(); i++){
-        //update the vector to the players location using the index
-        _whale_vector[i].update(_squid);
+        //add another boolean for individual sharks
+        bool _caught_squid = false;
+        
+        //add the for loop to loop over enemies
+        for(int i = 0; i< _whale_vector.size(); i++){
+            //update the vector to the players location using the index
+            _whale_vector[i].update(_squid);
 
-        if(_whale_vector[i].get_whale_collision()) {
-
-            _caught_squid = true;
+            if(_whale_vector[i].get_whale_collision()) {
+                _caught_squid = true;
+            }
         }
-    }
-
-    mj::game_result result(victory() || _caught_squid, false);
-    return result;
+        mj::game_result result(victory() || _caught_squid, false);
+        return result;
 }
 
 
