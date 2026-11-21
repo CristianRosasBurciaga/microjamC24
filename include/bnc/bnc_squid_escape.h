@@ -8,11 +8,6 @@
 
 
 namespace bnc {
-    /**
- * bnc is a class representing a microgame where the player must leave the screen.
- * 
- * Like all microgames, it is a public subclass of mj::game
- */
     class bnc_squid_escape : public mj::game {
 
         public:
@@ -78,15 +73,13 @@ namespace bnc {
         // The character that the player can move
         Squid _squid;
 
-        //background
-        bn::regular_bg_ptr _background;
-        //shark vector
+        //whale vector
         static constexpr int MAX_WHALES = 9;
         
-        //shark vector;
+        //whale vector;
         bn::vector<Whale, MAX_WHALES> _whale_vector = {};
 
-        // Returns progressively more sharks the harder the difficulty
+        // Returns progressively more whales the harder the difficulty
         int _whale_increase(mj::difficulty_level difficulty);
 
     };
