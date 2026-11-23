@@ -22,7 +22,7 @@ namespace bnc {
     void Bubbles::update(){
         _bubble.set_y(_bubble.y() - _bubble_speed);
 
-        if(_bubble.y() > MIN_Y){
+        if(_bubble.y() < MIN_Y){
             _bubble.set_y(MAX_Y);
         }
     }

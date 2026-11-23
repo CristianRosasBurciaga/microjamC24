@@ -77,7 +77,7 @@ namespace bnc {
         //whale vector
         static constexpr int MAX_WHALES = 9;
 
-        static constexpr int MAX_BUBBLES = 4;
+        static constexpr int MAX_BUBBLES = 6;
 
         //background
         bn::regular_bg_ptr _background;

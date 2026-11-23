@@ -117,6 +117,10 @@ mj::game_result bnc_squid_escape::play([[maybe_unused]] const mj::game_data& dat
         // update the player position
         _squid.update();
 
+        for(int i = 0; i< _bubble_vector.size(); i++){
+            //update the vector to move upwards randomly
+            _bubble_vector[i].update();
+        }
         //add another boolean for individual sharks
         bool _caught_squid = false;
         
