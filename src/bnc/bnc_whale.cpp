@@ -21,6 +21,18 @@ namespace bnc{
         return _whale_collision;
     }
 
+    
+    bool Whale::is_too_close(Squid& squid) {
+        //if whale spawns less than 10 pixels away from squid,
+        //return true
+        if(_whale.x() - squid.get_position().x() >= _distance_difference * -1|| _whale.x() - squid.get_position().x() <= _distance_difference) {
+            return true;
+        } else if(_whale.y() - squid.get_position().y() >= _distance_difference  * -1 || _whale.y() - squid.get_position().y() <= _distance_difference) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     void Whale::update(Squid& squid) {
         if(_whale.x() < squid.get_position().x()){
