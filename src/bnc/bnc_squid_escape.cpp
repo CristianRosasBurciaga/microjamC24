@@ -43,8 +43,8 @@ namespace bnc
     bnc_squid_escape::bnc_squid_escape(
         int completed_games,
         const mj::game_data& data) : mj::game("bnc"), 
-        _squid(bn::fixed_point(X_START, Y_START), SPEED)
-    {
+        _squid(bn::fixed_point(X_START, Y_START), SPEED),
+        _background(bn::regular_bg_items::bnc_ocean_bg.create_bg())    {
 
         for(int i = 0; i <_whale_increase(recommended_difficulty_level(completed_games, data)); i++) {
             _whale_vector.push_back(Whale(
@@ -66,7 +66,14 @@ namespace bnc
             BN_LOG("added new whale");
             }
         }
-    };
+
+        for(int i = 0; i < MAX_BUBBLES; i++) {
+        _bubble_vector.push_back(Bubbles(
+        data.random.get_unbiased_fixed(MIN_X, MAX_X),
+        MAX_Y,
+        data.random.get_unbiased_fixed(_BUBBLE_MIN_SPEED, _BUBBLE_MAX_SPEED)));
+        }
+}
 
     /**
  * The instructions given to the player at the beginning of the microgame.

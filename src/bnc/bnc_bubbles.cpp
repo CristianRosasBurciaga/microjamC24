@@ -14,10 +14,18 @@
 namespace bnc {
 
     //bubble constructor
-    // Bubbles::Bubbles(bn::fixed bubble_x, bn::fixed bubble_y, bn::fixed bubble_speed) :
-    // // _bubble(bn::sprite_items::bnc_bubble.create_sprite(bubble_x, bubble_y)),
-    // _bubble_speed(bubble_speed)
-    // {}
+    Bubbles::Bubbles(bn::fixed bubble_x, bn::fixed bubble_y, bn::fixed bubble_speed) :
+    _bubble(bn::sprite_items::bnc_bubble.create_sprite(bubble_x, bubble_y)),
+    _bubble_speed(bubble_speed)
+    {}
+
+    void Bubbles::update(){
+        _bubble.set_y(_bubble.y() - _bubble_speed);
+
+        if(_bubble.y() > MIN_Y){
+            _bubble.set_y(MAX_Y);
+        }
+    }
 
 
     

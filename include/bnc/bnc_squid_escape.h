@@ -5,6 +5,7 @@
 #include "mj/mj_game.h"
 #include "bnc/bnc_squid.h"
 #include "bnc/bnc_whale.h"
+#include "bnc/bnc_bubbles.h"
 
 
 namespace bnc {
@@ -75,9 +76,17 @@ namespace bnc {
 
         //whale vector
         static constexpr int MAX_WHALES = 9;
+
+        static constexpr int MAX_BUBBLES = 4;
+
+        //background
+        bn::regular_bg_ptr _background;
         
         //whale vector;
         bn::vector<Whale, MAX_WHALES> _whale_vector = {};
+
+        //bubble vector;
+        bn::vector<Bubbles, MAX_BUBBLES> _bubble_vector = {};
 
         // Returns progressively more whales the harder the difficulty
         int _whale_increase(mj::difficulty_level difficulty);
