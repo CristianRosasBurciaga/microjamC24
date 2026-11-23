@@ -28,9 +28,11 @@ namespace bnc {
         void update(Squid& squid);
         bool collide(Squid& squid);
         bool get_whale_collision() const;
+        bool is_too_close(Squid& squid); //returns true if whale spawns too close to squid
 
         private:
         bool _whale_collision = false;
+        bn::fixed _distance_difference = 10; //Measures difference of x, y points between squid and whale
         bn::sprite_ptr _whale;
         bn::rect _whale_hit_box;
         bn::fixed _whale_speed;

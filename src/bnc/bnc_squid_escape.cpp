@@ -53,18 +53,13 @@ namespace bnc
             WHALE_SPEED));
 
             //TODO: 
-            //Change logic to measure the difference in pixels between whale and squid
             //If whales are too close, relocate them
-            if(_whale_vector[i].get_whale_collision()) {
-                BN_LOG("whale on top");
-                _whale_vector.pop_back();
-                BN_LOG("remove from vector");
-                _whale_vector.push_back(Whale(
-            data.random.get_unbiased_fixed(MIN_X, MAX_X),
-            data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
-            WHALE_SPEED));
-            BN_LOG("added new whale");
-            }
+            //As of now, this if statement breaks the game
+            //Not sure where I went wrong and need feedback
+            // if(_whale_vector[i].is_too_close(_squid)) {
+            //     _whale_vector.pop_back();
+            //     i--;
+            // }
         }
 
         for(int i = 0; i < MAX_BUBBLES; i++) {
