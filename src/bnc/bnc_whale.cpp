@@ -30,32 +30,24 @@ namespace bnc{
     }
 
 
+    //Checks if squid collides with whale
     bool Whale::get_whale_collision() const {
         return _whale_collision;
     }
 
-    
+    //Checks if whales spawn too close to squid
     bool Whale::is_too_close(Squid& squid) {
         //if whale spawns less than 10 pixels away from squid,
         //return true
-        // _whale.squared(_whale.x) 
         if(distance_formula(_whale.x(), squid.get_position().x(), 
-                            _whale.y(), squid.get_position().y()) <= _distance_difference) {
+        _whale.y(), squid.get_position().y()) <= _distance_difference) {
             return true;
-        } 
-        // if(_whale.x() - squid.get_position().x() >= _distance_difference * -1 &&
-        //          _whale.x() - squid.get_position().x() <= _distance_difference) {
-        //     return true;
-        // } 
-        // else if(_whale.y() - squid.get_position().y() >= _distance_difference * -1 &&
-        //          _whale.y() - squid.get_position().y() <= _distance_difference) {
-        //     return true;
-        // } 
-        else {
+        } else {
             return false;
         }
     }
 
+    //updates hit box and position of the whale continuously
     void Whale::update(Squid& squid) {
         if(_whale.x() < squid.get_position().x()){
             _whale.set_x(_whale.x() + _whale_speed);
@@ -78,7 +70,5 @@ namespace bnc{
         if(_whale_hit_box.intersects(squid.get_squid_hit_box())){
             _whale_collision = true;
         }
-
-
     }
 }
