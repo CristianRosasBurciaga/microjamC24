@@ -52,14 +52,15 @@ namespace bnc
             data.random.get_unbiased_fixed(MIN_Y, MAX_Y),
             WHALE_SPEED));
 
-            //TODO: 
-            //If whales are too close, relocate them
-            //As of now, this if statement breaks the game
-            //Not sure where I went wrong and need feedback
-            // if(_whale_vector[i].is_too_close(_squid)) {
-            //     _whale_vector.pop_back();
-            //     i--;
-            // }
+            // TODO: 
+            // If whales are too close, relocate them
+            // As of now, this if statement breaks the game
+            // Not sure where I went wrong and need feedback
+            if(_whale_vector[i].is_too_close(_squid)) {
+                BN_LOG("whale too close");
+                _whale_vector.pop_back();
+                i--;
+            }
         }
 
         for(int i = 0; i < MAX_BUBBLES; i++) {

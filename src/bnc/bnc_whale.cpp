@@ -6,6 +6,7 @@
 
 #include <bn_vector.h>
 #include <bn_rect.h>
+#include <bn_math.h>
 
 
 namespace bnc{
@@ -16,6 +17,18 @@ namespace bnc{
     _whale_speed(speed), _whale_size(WHALE_SIZE)
     {}
 
+    //performs distance formula and returns distance between whale and squid
+    bn::fixed Whale::distance_formula(bn::fixed whale_x, bn::fixed squid_x, bn::fixed whale_y, bn::fixed squid_y) {
+        bn::fixed x_value = whale_x - squid_x;
+        bn::fixed y_value = whale_y - squid_y;
+
+        x_value *= x_value;
+        y_value *= y_value;
+
+        bn::fixed result = x_value + y_value;
+        return bn::sqrt(result);
+    }
+
 
     bool Whale::get_whale_collision() const {
         return _whale_collision;
@@ -25,11 +38,20 @@ namespace bnc{
     bool Whale::is_too_close(Squid& squid) {
         //if whale spawns less than 10 pixels away from squid,
         //return true
-        if(_whale.x() - squid.get_position().x() >= _distance_difference * -1|| _whale.x() - squid.get_position().x() <= _distance_difference) {
+        // _whale.squared(_whale.x) 
+        if(distance_formula(_whale.x(), squid.get_position().x(), 
+                            _whale.y(), squid.get_position().y()) <= _distance_difference) {
             return true;
-        } else if(_whale.y() - squid.get_position().y() >= _distance_difference  * -1 || _whale.y() - squid.get_position().y() <= _distance_difference) {
-            return true;
-        } else {
+        } 
+        // if(_whale.x() - squid.get_position().x() >= _distance_difference * -1 &&
+        //          _whale.x() - squid.get_position().x() <= _distance_difference) {
+        //     return true;
+        // } 
+        // else if(_whale.y() - squid.get_position().y() >= _distance_difference * -1 &&
+        //          _whale.y() - squid.get_position().y() <= _distance_difference) {
+        //     return true;
+        // } 
+        else {
             return false;
         }
     }
